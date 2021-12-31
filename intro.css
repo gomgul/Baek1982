@@ -251,13 +251,17 @@ a {
   
 }
 .main_button:hover {
-  color: black;
   background-color: white;
+  color:rgba(0, 0, 0, 0.4);
+  
 }
 #main_button1{
    margin-top: 50px;
    color: white;
+ 
 }
+
+
 
 
 
