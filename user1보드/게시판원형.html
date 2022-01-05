@@ -38,24 +38,20 @@
                
                <!-- 오른쪽 메뉴-->
                <div class="right-menu">
-                   <!--검색 -->
-                   <a href="/project1982/owner/job_positing.do" class="search">
-                   구인공고
-                   </a>
-                   <!--유저 -->
-                   <a href="/project1982/owner/ownerMypage.do" class="user">
-                   마이페이지
-                   </a>
-                   <!--카트  -->
-                   <a href="/project1982/owner/ownerBoard.do">
-                   고객센터
-                       <!--카트 상품-->
-                       
-                   </a>
-                   <a href="/project1982/index.jsp" class="logout">
-                    로그아웃
-                   </a>
-               </div>
+                <!--검색 -->
+                <a href="storeClose.do?userid=${userId}" class="search">
+                일자리찾기
+                </a>
+                <a href="userMypage.do?userid=${userId}" class="user">
+                마이페이지
+                </a>
+                <a href="userBoard.do?userid=${userId}">
+                고객센터                       
+                </a>
+                <a href="/project1982/index.jsp" class="logout">
+                 로그아웃
+                </a>
+            </div>
    
            </header>
 <!-- -----------메인---------------- -->
@@ -159,13 +155,23 @@
                     <div class="divTableCell">${board.b_fsize}byte</div>
                </div> <!-- 첫행 -->
                 <div class="divTableRow">
-                    <div class="divTableCell">cell1_2</div>
-                    <div class="divTableCell">cell2_2</div>
-                    <div class="divTableCell">cell3_2</div>
-                    <div class="divTableCell">cell4_2</div>
-                    <div class="divTableCell">지가사장인줄암</div>
-                    <div class="divTableCell"><button>차단</button></div>
-                    <div class="divTableCell"><button>알바 종료</button></div>
+                    <div class="divTableCell">${board.b_id }</div>
+                    <div class="divTableCell">
+                        <a href="#" onclick="window.open('getBoard.do?b_id=${board.b_id}', '상세글보기','width=500;, height=500, resizable = no, scrollbars = no'); return false">
+                            ${board.b_title }</a>
+                    </div>
+                    <div class="divTableCell">${board.b_name }</div>
+                    <div class="divTableCell">${board.b_date }</div>
+                    <div class="divTableCell">${board.b_count }</div>
+                    <div class="divTableCell">
+                        <c:choose>
+                        <c:when test="${board.b_fsize==0}">첨부파일 없음</c:when>
+                        <c:otherwise>
+                                <img src="resources/images/disk.gif">${board.b_fname}
+                        </c:otherwise>
+                        </c:choose>
+                    </div>
+                    <div class="divTableCell">${board.b_fsize}byte</div>
                 </div>
                 <div class="divTableRow">
                     <div class="divTableCell">cell1_3</div>
